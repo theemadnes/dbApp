@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class DBApp {
 	
@@ -17,8 +18,9 @@ public class DBApp {
 		Statement stmt = null;
 		Scanner userInput = new Scanner(System.in);
 		String userString = "";
-		// int userInt = 0;
-		double userFloat = 0.0;
+		String userNameInput = "";
+		double userDouble = 0.0;
+		String uuidString = "";
 		boolean answerValidation = false;
 		   
 		try{
@@ -42,7 +44,7 @@ public class DBApp {
 
 		        String userID = rs.getString("userID");
 		        String userName = rs.getString("userName");
-		        float balance = rs.getFloat("balance");
+		        double balance = rs.getDouble("balance");
 
 		        		//Display values
 		        System.out.print("ID: " + userID);
@@ -86,12 +88,20 @@ public class DBApp {
 				displayTable();
 			}
 			
-			if ((userString.equals("B")) || (userString.equals("b")))
+			else if ((userString.equals("B")) || (userString.equals("b")))
 			{
 				System.out.println("Inserting new entry.");
+				System.out.println("Name:");
+				userNameInput = userInput.next();
+				System.out.println("Balance:");
+				userString = userInput.next();
+				userDouble = Double.parseDouble(userString);
+				uuidString = getUUID();
+				System.out.println("Inserting the following values: " + uuidString + " ... " + userNameInput + " ... " + userDouble);
+				
 			}
 			
-			if (userString.equals("C") || userString.equals("c"))
+			else if (userString.equals("C") || userString.equals("c"))
 			{
 				answerValidation = true;
 				System.out.println("Goodbye!");
@@ -172,6 +182,12 @@ public class DBApp {
 		System.out.println("A - Display Table");
 		System.out.println("B - Insert Entry");
 		System.out.println("C - Exit");
+	}
+	
+	public static String getUUID ()
+	{
+		String uuid = UUID.randomUUID().toString();
+		return uuid;
 	}
 	
 }
