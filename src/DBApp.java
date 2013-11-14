@@ -8,7 +8,7 @@ public class DBApp {
 
 	   //  Database credentials
 	static final String USER = "alexdemo";
-	static final String PASS = "elonelon";
+	static final String PASS = "passw0rd";
 
 	public static void main(String[] args) {
 		
