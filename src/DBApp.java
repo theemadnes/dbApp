@@ -90,9 +90,10 @@ public class DBApp {
 			
 			else if ((userString.equals("B")) || (userString.equals("b")))
 			{
+				userInput.nextLine();
 				System.out.println("Inserting new entry.");
 				System.out.println("Name:");
-				userNameInput = userInput.next();
+				userNameInput = userInput.nextLine();
 				System.out.println("Balance:");
 				userString = userInput.next();
 				userDouble = Double.parseDouble(userString);
@@ -209,9 +210,9 @@ public class DBApp {
 		    stmt = conn.createStatement();
 		    String sql;
 		    sql = "INSERT INTO table1 " +
-	                   "VALUES (" + uuid + "," + name + "," + balance + ")";
+	                   "VALUES (\"" + uuid + "\",\"" + name + "\"," + balance + ")";
 		    stmt.executeUpdate(sql);
-		    // System.out.println(sql);
+		    //System.out.println(sql);
 		
 
 		      //STEP 5: Clean-up environment
